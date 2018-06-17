@@ -1,4 +1,4 @@
-package net.marco27.apps.bookmarks;
+package net.marco27.apps.book;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BookmarksApplicationTest {
+public class BookApplicationTest {
 
     @Test
     public void contextLoads() {
