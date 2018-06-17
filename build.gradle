@@ -11,7 +11,6 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
@@ -26,5 +25,7 @@ repositories {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
+	compile group: 'com.datastax.cassandra', name: 'cassandra-driver-core', version: '3.5.0'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile group: 'org.cassandraunit', name: 'cassandra-unit', version: '3.5.0.1'
 }
