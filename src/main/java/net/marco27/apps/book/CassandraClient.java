@@ -16,27 +16,27 @@ public class CassandraClient {
         connector.connect("127.0.0.1", null);
         Session session = connector.getSession();
 
-        KeyspaceRepository sr = new KeyspaceRepository(session);
-        sr.createKeyspace("library", "SimpleStrategy", 1);
-        sr.useKeyspace("library");
+        KeyspaceRepository keyspaceRepository = new KeyspaceRepository(session);
+        keyspaceRepository.createKeyspace("library", "SimpleStrategy", 1);
+        keyspaceRepository.useKeyspace("library");
 
-        BookRepository br = new BookRepository(session);
-        br.createTable();
-        br.alterTablebooks("publisher", "text");
+        BookRepository bookRepository = new BookRepository(session);
+        bookRepository.createTable();
+        bookRepository.alterTablebooks("publisher", "text");
 
-        br.createTableBooksByTitle();
+        bookRepository.createTableBooksByTitle();
 
         Book book = new Book(UUIDs.timeBased(), "Effective Java", "Joshua Bloch", "Programming");
-        br.insertBookBatch(book);
+        bookRepository.insertBookBatch(book);
 
-        br.selectAll().forEach(o -> LOG.info("Title in books: " + o.getTitle()));
-        br.selectAllBookByTitle().forEach(o -> LOG.info("Title in booksByTitle: " + o.getTitle()));
+        bookRepository.selectAll().forEach(o -> LOG.info("Title in books: " + o.getTitle()));
+        bookRepository.selectAllBookByTitle().forEach(o -> LOG.info("Title in booksByTitle: " + o.getTitle()));
 
-        br.deletebookByTitle("Effective Java");
-        br.deleteTable("books");
-        br.deleteTable("booksByTitle");
+        bookRepository.deletebookByTitle("Effective Java");
+        bookRepository.deleteTable("books");
+        bookRepository.deleteTable("booksByTitle");
 
-        sr.deleteKeyspace("library");
+        keyspaceRepository.deleteKeyspace("library");
 
         connector.close();
     }
