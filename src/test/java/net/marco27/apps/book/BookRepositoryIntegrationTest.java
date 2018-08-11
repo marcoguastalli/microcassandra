@@ -1,12 +1,16 @@
 package net.marco27.apps.book;
 
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Session;
-import com.datastax.driver.core.exceptions.InvalidQueryException;
-import com.datastax.driver.core.utils.UUIDs;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import net.marco27.apps.book.domain.Book;
-import net.marco27.apps.book.repository.BookRepository;
-import net.marco27.apps.book.repository.KeyspaceRepository;
+import net.marco27.apps.book.repository.*;
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.thrift.transport.TTransportException;
 import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
@@ -15,11 +19,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Session;
+import com.datastax.driver.core.exceptions.InvalidQueryException;
+import com.datastax.driver.core.utils.UUIDs;
 
 public class BookRepositoryIntegrationTest {
 
