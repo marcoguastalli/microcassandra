@@ -65,6 +65,6 @@ public class KeyspaceRepositoryIntegrationTest {
 
     @AfterClass
     public static void cleanup() {
-        EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
+        //EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
     }
 }

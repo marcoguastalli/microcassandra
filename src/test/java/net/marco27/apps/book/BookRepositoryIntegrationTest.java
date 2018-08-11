@@ -171,6 +171,6 @@ public class BookRepositoryIntegrationTest {
 
     @AfterClass
     public static void cleanup() {
-        EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
+        //EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
     }
 }
